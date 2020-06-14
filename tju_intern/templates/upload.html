@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>小声辨音</title>
+    <!-- 引入 echarts.js -->
+    <script src="http://cdn.bootcss.com/echarts/3.2.3/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+</head>
+<body>
+<div class="b0" style="top: 100px;left: 30px;width: auto">
+    <form method="post" action="/upfile" enctype="multipart/form-data">
+        <h3>请上传音频文件1  目前只支持采样率为16000的wav格式</h3>
+        <br>
+        <input type="file" name="soundfile">
+        <br>
+        <input type="submit" value="上传"><br>
+    </form>
+</div>
+<br>
+<div>
+    {{ file }}
+</div>
+<div id="chart1" style="width: 500px;height:400px;"></div>
+
+</body>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('chart1'));
+
+    option = {
+
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        title: {
+            text: '音频时域图1'
+        },
+        xAxis: {
+            type: 'category',
+            data:{{ a }}
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: {{ signal }},
+            type: 'line'
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>

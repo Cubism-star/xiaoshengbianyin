@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="b0" style="top: 100px;left: 30px;width: auto">
+    <form method="post" action="/imageupfile" enctype="multipart/form-data">
+        <h3>请上传图片</h3>
+        <br>
+        <input type="file" name="image">
+        <br>
+        <input type="submit" value="上传"><br>
+    </form>
+</div>
+<img src='{{ image }}'>
+</body>
+</html>
